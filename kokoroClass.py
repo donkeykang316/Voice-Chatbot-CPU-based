@@ -1,12 +1,5 @@
-# from playsound import playsound
-# print("Playing the audio file...")
-# try:
-#     playsound('./output.wav')
-# except Exception as e:
-#     print(f"An error occurred while playing the audio: {e}")
-
 from kokoro_onnx import Kokoro
-from playsound import playsound
+import simpleaudio as sa
 import soundfile as sf
 import tempfile
 import os
@@ -14,7 +7,7 @@ import os
 class KokoroTTS:
     def __init__(self):
         # Initialize Kokoro
-        self.kokoro = Kokoro("kokoro-v0_19.onnx", "voices-v1.0.bin")
+        self.kokoro = Kokoro("../models/kokoro-v0_19.onnx", "../models/voices-v1.0.bin")
         # Available voices
         self.voices = [
             'af', 'af_bella', 'af_nicole', 'af_sarah', 'af_sky',
@@ -44,10 +37,12 @@ class KokoroTTS:
     def play_audio(self):
         try:
             print("Playing the audio file...")
-            playsound(self.audio_path)
+            wave_obj = sa.WaveObject.from_wave_file(self.audio_path)
+            play_obj = wave_obj.play()
+            play_obj.wait_done()
         except Exception as e:
             print(f"An error occurred while playing the audio: {e}")
-    
+            
 def main():
     app = KokoroTTS()
     app.generate_speech(
@@ -57,5 +52,5 @@ def main():
     )
     app.play_audio()
 
-#if __name__ == "__main__":
-#    main()
+# if __name__ == "__main__":
+#     main()

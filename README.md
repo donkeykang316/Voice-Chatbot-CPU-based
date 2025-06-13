@@ -22,7 +22,7 @@ To get started, make sure you have the following files:
 | TTS Core | Core voice synthesis model    | `kokoro-v0_19.onnx` |
 | TTS Data | Voice data pack               | `voices-v1.0.bin` |
 
-> ⚠️ These files must be placed in the root directory (or your configured model path).
+> ⚠️ These files must be placed in the directory "models" ouside of the root (or your configured model path).
 
 ---
 

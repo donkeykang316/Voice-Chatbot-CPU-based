@@ -4,7 +4,7 @@ from fastwhisperClass import FastWhisperSTT
 from kokoroClass import KokoroTTS
 
 class ChatBot:
-    def __init__(self, model_path="deepseek-llm-7b-chat.Q4_0.gguf", stt=FastWhisperSTT(),
+    def __init__(self, model_path="../models/deepseek-llm-7b-chat.Q4_0.gguf", stt=FastWhisperSTT(),
                  tts=KokoroTTS()):
         self.model_path = model_path
         self.conversation_history = [
